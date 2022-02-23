@@ -1,6 +1,7 @@
 import requests
 import lxml
 from bs4 import BeautifulSoup
+import csv
 
 
 HOME = 'https://www.pagina12.com.ar/'
@@ -73,18 +74,17 @@ def get_new(url):
 
 
 def run():
-    all_news_dict = []
+    all_news_list = []
     hot_section_links = get_hot_section_links()
     all_news_links = get_news_links(hot_section_links)
     for link in all_news_links:
         temp_dict = get_new(link)
-        all_news_dict.append(temp_dict)
-    print(all_news_dict)
-    # all_new_links = get_news_links(list_hot_sections_links)
-    # for link in all_new_links:
-    #     temp_dict = get_new(link)
-    #     all_news_dict.append(temp_dict)
-    # print(all_news_dict)
+        all_news_list.append(temp_dict)
+    keys = all_news_list[0].keys()
+    with open('23-02-2022.csv', 'w', newline='', encoding='utf-8') as output:
+        dict_writer = csv.DictWriter(output, keys)
+        dict_writer.writeheader()
+        dict_writer.writerows(all_news_list)
     
 
 if __name__ == '__main__':
