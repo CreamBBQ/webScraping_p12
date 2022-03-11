@@ -11,4 +11,4 @@
 [1]: https://twitter.com/CreamBBQ
 [6]: https://github.com/CreamBBQ
 
-## A simple script to save the news information from the Page12 website daily. A simple integration with a cloud service could collect large volumes of information. 
+A simple script to save the news information from the Page12 website daily. A simple integration with a cloud service could collect large volumes of information. 
